@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Problems - Online Judge{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Programming Problems</h1>
+    <p>Choose a problem to solve and test your coding skills!</p>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Problem</th>
+                <th>Difficulty</th>
+                <th>Time Limit</th>
+                <th>Memory Limit</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for problem in problems %}
+            <tr>
+                <td>{{ problem.id }}</td>
+                <td>
+                    <a href="/problem/{{ problem.id }}" style="text-decoration: none; color: #3498db;">
+                        {{ problem.title }}
+                    </a>
+                </td>
+                <td>
+                    <span class="difficulty-{{ problem.difficulty }}">
+                        {{ problem.difficulty }}
+                    </span>
+                </td>
+                <td>{{ problem.time_limit }}ms</td>
+                <td>{{ problem.memory_limit }}MB</td>
+                <td>
+                    <a href="/problem/{{ problem.id }}" class="btn">Solve</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

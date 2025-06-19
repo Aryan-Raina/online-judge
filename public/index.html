@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI IDE with Monaco</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.34.1/min/vs/loader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FastAPI Online IDE</h1>
+            <div class="controls">
+                <select id="language-selector">
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript</option>
+                </select>
+                <button id="run-btn">▶ Run (Ctrl+Enter)</button>
+                <button id="clear-btn">Clear</button>
+            </div>
+        </header>
+        
+        <main class="ide-layout">
+            <div id="editor-container">
+                <div id="editor"></div>
+            </div>
+            
+            <!-- This container now holds both input and output -->
+            <div class="io-container">
+                <!-- ADDED: The new input area -->
+                <div id="input-area">
+                    <h3>Standard Input (stdin)</h3>
+                    <textarea id="input-data" placeholder="Enter input for your code here..."></textarea>
+                </div>
+                
+                <div id="output-area">
+                    <h3>Output</h3>
+                    <pre id="output">Welcome! Monaco Editor is ready.</pre>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

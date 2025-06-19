@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Submissions - Online Judge{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Recent Submissions</h1>
+    <p>Track your progress and see all submission results.</p>
+</div>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Problem</th>
+                <th>Language</th>
+                <th>Verdict</th>
+                <th>Time</th>
+                <th>Memory</th>
+                <th>Test Cases</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for submission in submissions %}
+            <tr>
+                <td>{{ submission.id }}</td>
+                <td>
+                    <a href="/problem/{{ submission.problem_id }}" style="text-decoration: none; color: #3498db;">
+                        {{ submission.problem_title }}
+                    </a>
+                </td>
+                <td>{{ submission.language|title }}</td>
+                <td>
+                    <span class="verdict verdict-{{ submission.verdict }}">
+                        {{ submission.verdict }}
+                    </span>
+                </td>
+                <td>{{ submission.execution_time }}ms</td>
+                <td>{{ submission.memory_used }}KB</td>
+                <td>{{ submission.test_cases_passed }}/{{ submission.total_test_cases }}</td>
+                <td>{{ submission.submitted_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% if not submissions %}
+    <div style="text-align: center; padding: 2rem; color: #666;">
+        No submissions yet. <a href="/">Start solving problems!</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
